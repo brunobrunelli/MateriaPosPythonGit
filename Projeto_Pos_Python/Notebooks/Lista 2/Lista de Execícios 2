@@ -68,7 +68,9 @@ qtd_acidentes_type = pd_data2.type.value_counts().rename_axis('type').reset_inde
 #Ano e fabricante da aeronave mais antiga (year_manufacturing, manufacturer)
 min_val = pd_data2.year_manufacturing[pd_data2.year_manufacturing.apply(lambda x: x > 0)].min()
 
-old_fabricante = pd_data2[['year_manufacturing','manufacturer']].loc[pd_data2.year_manufacturing == pd_data2.year_manufacturing[pd_data2.year_manufacturing.apply(lambda x: x > 0)].min()]
+old_fabricante = pd_data2[['year_manufacturing','manufacturer']]\
+.loc[pd_data2.year_manufacturing == pd_data2.year_manufacturing[pd_data2.year_manufacturing.apply(lambda x: x > 0)].min()]
 
 # Quantidade de assentos e tipo de motor da aeronave mais nova (seating, engine_type)
-qtd_aero_motor = pd_data2[['seating','engine_type']].loc[pd_data2.year_manufacturing == pd_data2.year_manufacturing.max()].dropna().groupby(['engine_type']).max().reset_index()
+qtd_aero_motor = pd_data2[['seating','engine_type']].loc[pd_data2.year_manufacturing == pd_data2.year_manufacturing.max()]\
+.dropna().groupby(['engine_type']).max().reset_index()
